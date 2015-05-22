@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - auction@localhost" uuid="eaf395d1-4ee1-4d87-9261-01343b617208">
+    <database-info product="MySQL" version="5.6.24-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="auction"/>
+    <table name="announcement" schema="" catalog="auction" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="bid" schema="" catalog="auction" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="goods_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="offer" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="bid_goods" columns="goods_id" ref-table="goods" ref-schema="" ref-catalog="auction" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="bid_user" columns="user_id" ref-table="user" ref-schema="" ref-catalog="auction" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="bid_goods" unique="false" columns="goods_id"/>
+      <index name="bid_user" unique="false" columns="user_id"/>
+    </table>
+    <table name="bidinfo" schema="" catalog="auction" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="goods_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="offer" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="deadline" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="status" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+    </table>
+    <table name="chat" schema="" catalog="auction" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="user_id" columns="user_id" ref-table="user" ref-schema="" ref-catalog="auction" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="chatinfo" schema="" catalog="auction" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+    </table>
+    <table name="comment" schema="" catalog="auction" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="goods_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="cgi" columns="goods_id" ref-table="goods" ref-schema="" ref-catalog="auction" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="cui" columns="user_id" ref-table="user" ref-schema="" ref-catalog="auction" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="cgi" unique="false" columns="goods_id"/>
+      <index name="cui" unique="false" columns="user_id"/>
+    </table>
+    <table name="commentinfo" schema="" catalog="auction" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="goods_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+    </table>
+    <table name="complain" schema="" catalog="auction" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="complain_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="comui" columns="user_id" ref-table="user" ref-schema="" ref-catalog="auction" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="comui" unique="false" columns="user_id"/>
+    </table>
+    <table name="complaininfo" schema="" catalog="auction" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="complain_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+    </table>
+    <table name="goods" schema="" catalog="auction" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pic" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="deadline" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="status" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="user_id_goods" columns="user_id" ref-table="user" ref-schema="" ref-catalog="auction" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="bid_goods" table="bid" schema="" catalog="auction" columns="goods_id"/>
+      <exported-key name="cgi" table="comment" schema="" catalog="auction" columns="goods_id"/>
+      <index name="title" unique="false" columns="title"/>
+      <index name="user_id_goods" unique="false" columns="user_id"/>
+    </table>
+    <table name="goodsinfo" schema="" catalog="auction" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_status" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" remarks="ZnJlZXplLCBub3JtYWwsIGFkbWlu"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pic" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="deadline" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="status" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+    </table>
+    <table name="user" schema="" catalog="auction" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" remarks="ZnJlZXplLCBub3JtYWwsIGFkbWlu"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="bid_user" table="bid" schema="" catalog="auction" columns="user_id"/>
+      <exported-key name="user_id" table="chat" schema="" catalog="auction" columns="user_id"/>
+      <exported-key name="cui" table="comment" schema="" catalog="auction" columns="user_id"/>
+      <exported-key name="comui" table="complain" schema="" catalog="auction" columns="user_id"/>
+      <exported-key name="user_id_goods" table="goods" schema="" catalog="auction" columns="user_id"/>
+      <index name="name" unique="true" columns="name"/>
+    </table>
+  </data-source>
+</component>
