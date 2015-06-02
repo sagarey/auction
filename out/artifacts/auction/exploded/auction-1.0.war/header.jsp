@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-tour.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/images/favicon.ico">
     <!--[if lt IE 9]>
     <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -29,10 +30,18 @@
                     <li><a href="/admin">管理</a></li>
                 </c:if>
                 <li><a href="/announcement">公告</a></li>
-                <li><a href="#postgoods" data-toggle="modal" data-target="#postgoods">发布商品</a></li>
                 <li><a href="/chat">聊天室</a></li>
-                <li><a href="/profile">${currentUser}</a></li>
-                <li><a href="/logout">注销</a></li>
+                <li class="dropdown">
+                    <a href="#" class="user dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${currentUser} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#postgoods" data-toggle="modal" data-target="#postgoods"><small class="glyphicon glyphicon-edit text-success" aria-hidden="true"></small> 发布商品</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/profile"><small class="glyphicon glyphicon-user text-primary" aria-hidden="true"></small> 个人信息</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout"><small class="glyphicon glyphicon-off text-danger" aria-hidden="true"></small> 注销用户</a></li>
+                        <li><a href="#" class="hidden"></a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         </c:if>

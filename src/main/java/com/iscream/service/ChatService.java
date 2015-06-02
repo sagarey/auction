@@ -7,6 +7,7 @@ import com.iscream.entity.Chatinfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -37,5 +38,13 @@ public class ChatService {
 
     public List<Chatinfo> getAll(){
         return chatDao.getAll();
+    }
+
+    public List<Chatinfo> getPage(int page){
+        int size = 8;
+        int index = page * size - size;
+        List<Chatinfo> list = chatDao.getPage(index, size);
+        Collections.reverse(list);
+        return list;
     }
 }

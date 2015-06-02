@@ -11,7 +11,7 @@
     </div>
     <a href="/goods/${goodsinfo.id}" class="btn btn-primary btn-block" role="button">${goodsinfo.price} 元起拍</a>
   </div>
-  <div class="panel panel-primary content">
+  <div class="panel panel-primary content" style="display: none">
     <div class="panel-heading">
       <h3 class="panel-title">${goodsinfo.title}</h3>
     </div>

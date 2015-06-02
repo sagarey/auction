@@ -23,7 +23,7 @@
                         <br/>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input required type="text" class="form-control" id="keyword" placeholder="商品名称">
+                                    <input required type="text" class="form-control" id="keyword" placeholder="商品标题">
                                       <span class="input-group-btn">
                                         <button class="btn btn-primary search" type="button">搜索</button>
                                       </span>
@@ -40,7 +40,6 @@
 <script>
     $(document).ready(function(){
         $('a[href="#${tab}"]').tab('show');
-        $('.content').hide();
         $('#goods').on('mouseenter', '.goods', function(){
             $(this).find('.content').fadeIn(200);
             $(this).find('.thumbnail').css("box-shadow","-2px 2px 12px #333");
@@ -52,7 +51,6 @@
         $('.search').click(function(){
             keyword = $("#keyword").val();
                 $('#goods').load('/?keyword=' + keyword + ' #goodsList', function() {
-                    $('.content').hide();
                     $('.thumbnail img').width("100%");
                     $('.thumbnail img').height($('.thumbnail img').width()/1.7);
                     re = new RegExp("(" + keyword + ")","ig");
@@ -66,5 +64,44 @@
         window.onresize = function(){
             $('.thumbnail img').height($('.thumbnail img').width()/1.7);
         }
+
+        <c:if test="${currentUser != null}" >
+        var close = "<button type='button' class='close' aria-label='Close' style='margin-top: -3px'><span aria-hidden='true' data-role='end'>&times;</span></button>";
+        var tour = new Tour({
+            steps: [
+                {
+                    element: "#goodsList",
+                    title: "拍卖中的商品" + close,
+                    content: "这里显示正在进行拍卖的商品，鼠标放置在商品上显示商品信息。",
+                    placement: "right"
+                },
+                {
+                    element: "#post",
+                    title: "搜索" + close,
+                    content: "键入关键字搜索商品标题。",
+                    placement: "left"
+                },
+                {
+                    element: "[href='/announcement']",
+                    title: "公告" + close,
+                    content: "点击这里查看站点公告。",
+                    placement: "bottom"
+                },
+                {
+                    element: "[href='/chat']",
+                    title: "聊天室" + close,
+                    content: "从这里进入聊天室。",
+                    placement: "bottom"
+                },
+                {
+                    element: ".user",
+                    title: "用户" + close,
+                    content: "点击弹出下拉选项，可进行商品发布、个人信息管理及登出操作。",
+                    placement: "bottom"
+                }
+            ]});
+        tour.init();
+        tour.start();
+        </c:if>
     });
 </script>

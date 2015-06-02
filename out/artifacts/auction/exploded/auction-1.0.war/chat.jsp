@@ -4,15 +4,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-9">
-            <c:forEach items="${chatinfoList}" var="chatinfo" >
             <div class="row">
-                <div style="padding: 8px" class="label label-${chatinfo.name eq currentUser ? "primary" : "danger" } pull-${chatinfo.name eq currentUser ? "right" : "left" }">
-                    <a style="color: white" href="/user/${chatinfo.userId}">${chatinfo.name}</a>
+                <div class="col-md-12">
+                    <h5 class="text-center" style="margin-bottom: 5px">
+                        <small><button id="more" name="${page + 1}" class="btn-link">历史信息</button></small></h5>
+                    <hr style="margin-top: 0px"/>
                 </div>
-                <span class="pull-${chatinfo.name eq currentUser ? "right" : "left" }">&nbsp;&nbsp;</span>
-                <div style="padding: 12px" class="alert alert-${chatinfo.name eq currentUser ? "info" : "warning" } pull-${chatinfo.name eq currentUser ? "right" : "left" }">${chatinfo.content}</div>
             </div>
-            </c:forEach>
+            <div class="row">
+                <div class="col-md-12" id="message">
+                    <jsp:include page="message.jsp"/>
+                </div>
+            </div>
         </div>
         <div class="col-md-3">
             <div class="well" role="tabpanel">
@@ -36,3 +39,17 @@
     </div>
 </div>
 <jsp:include page="footer.jsp" />
+<script>
+    $("#more").click(function(){
+        page = $(this).attr("name");
+        $.ajax({
+            url:"/chat/message",
+            async:false,
+            data: { page: page },
+            success: function(data){
+                $("#more").attr("name", Number(page) + 1);
+                $("#message").prepend(data);
+            }
+        });
+    });
+</script>

@@ -2,10 +2,10 @@
 <div class="well" role="tabpanel">
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">登录</a></li>
-    <li role="presentation"><a href="#signup" aria-controls="signup" role="tab" data-toggle="tab">注册</a></li>
+    <li role="presentation" class="signup"><a href="#signup" aria-controls="signup" role="tab" data-toggle="tab">注册</a></li>
   </ul>
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="login">
+    <div role="tabpanel" class="tab-pane active login" id="login">
       <br/>
       <form action="/login" method="post" class="${loginError}">
         <div class="form-group">
