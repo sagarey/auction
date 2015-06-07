@@ -65,7 +65,7 @@
         $.ajax({
             type: "POST",
             url: "/announcement/delete",
-            data: {id: $(this).prev('a').attr('id')},
+            data: {id: $(this).closest('h4').find('a').attr('id')},
             success:function(){
                 $('#announcement').load('/announcement #announcementList');
             }

@@ -91,8 +91,8 @@
         $('#contain').load('/user/' + id + ' #container', function() {
           $('.content').hide();
           $('.complain').hide();
-          $('.thumbnail img').width("100%");
-          $('.thumbnail img').height($('.thumbnail img').width()/1.7);
+          $('.normal img').width("100%");
+          $('.normal img').height($('.normal img').width()/1.7);
         });
       }
     });
@@ -107,15 +107,15 @@
         $('#contain').load('/user/' + id + ' #container', function(){
           $('.content').hide();
           $('.complain').hide();
-          $('.thumbnail img').width("100%");
-          $('.thumbnail img').height($('.thumbnail img').width()/1.7);
+          $('.normal img').width("100%");
+          $('.normal img').height($('.normal img').width()/1.7);
         });
       }
     });
   });
-  $('.thumbnail img').width("100%");
-  $('.thumbnail img').height($('.thumbnail img').width()/1.7);
+  $('.normal img').width("100%");
+  $('.normal img').height($('.normal img').width()/1.7);
   window.onresize = function(){
-    $('.thumbnail img').height($('.thumbnail img').width()/1.7);
+    $('.normal img').height($('.normal img').width()/1.7);
   }
 </script>

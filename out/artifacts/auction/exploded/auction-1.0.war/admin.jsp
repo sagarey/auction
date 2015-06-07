@@ -80,4 +80,16 @@
       }
     });
   });
+  var close = "<button type='button' class='close' aria-label='Close' style='margin-top: -3px'><span aria-hidden='true' data-role='end'>&times;</span></button>";
+  var tour = new Tour({
+    steps: [
+      {
+        element: "[href='/announcement']",
+        title: "公告" + close,
+        content: "与普通用户不同，管理员允许管理站点公告。",
+        placement: "bottom"
+      }
+    ]});
+  tour.init();
+  tour.start();
 </script>
